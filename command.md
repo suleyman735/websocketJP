@@ -5,3 +5,10 @@ django-admin startproject settings .
 python3 manage.py startapp app
 
 pip install channels
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+
+to check asgi or wsgi
+pip install daphne
+daphne -b 0.0.0.0 -p 8000 settings.wsgi:application
