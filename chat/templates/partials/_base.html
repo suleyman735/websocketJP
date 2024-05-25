@@ -1,0 +1,31 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Real chat app</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+
+    <!-- Google Web Fonts -->
+
+
+</head>
+
+<body>
+
+
+    {% include 'partials/_navbar.html' %}
+
+
+    {% block content%}
+    {% endblock %}
+
+    {% include 'partials/_footer.html' %}
