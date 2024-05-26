@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for (var i = 0; i < cookies.length; i++) {
             var cookie = cookies[i].trim();
 
-            if (cookie.substring(0,name.length+1)===(name+ '=')) {
+            if (cookie.substring(0,name.length + 1)===(name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length+1))
                 break
                 
@@ -96,12 +96,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const data = new FormData()
         data.append('name',chatName)
         data.append('url',chatWindowUrl)
-
+        const csrfToken = getCookie('csrftoken');
        await fetch(`/api/create-room/${chatRoomUuid}/`,{
             method:'POST',
             headers:{
-                'X-CSRFToken':getCookie('csrftoken')
-            }
+                'X-CSRFToken':csrfToken
+            },
+            body:data
         }).then(function (res) {
             return res.json()
             

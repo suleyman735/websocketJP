@@ -38,6 +38,10 @@ c. application asgi
             pip install daphne
             daphne -b 0.0.0.0 -p 8000 settings.wsgi:application
 
+d) Redis layer.  
+    1. add redis to on your local.
+    2. activate redis 
+
 
 d) 1. adding javascript 
     2. to send data with fetch 

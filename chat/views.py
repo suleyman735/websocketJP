@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
 from .models import Room
-
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 def index(request):
@@ -12,7 +12,7 @@ def index(request):
         'chat':'chat'
     }
     return render (request,'index.html',context)
-
+@csrf_exempt
 @require_POST
 def create_room(request,uuid):
     name = request.POST.get('name','')

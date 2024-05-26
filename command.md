@@ -8,6 +8,14 @@ pip install channels
 pip freeze > requirements.txt
 pip install -r requirements.txt
 
+pip install channels_redis
+pip install django-redis
+
+redis-cli
+
+redis-cli ping
+# Output: PONG
+
 
 to check asgi or wsgi
 pip install daphne

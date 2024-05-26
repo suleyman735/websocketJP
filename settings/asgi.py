@@ -22,9 +22,9 @@ from chat import routing
  
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.settings')
-django_asgi_application = get_asgi_application()
+application = get_asgi_application()
 application = ProtocolTypeRouter({
-    'http': django_asgi_application,
+    'http': application,
     'websocket': AllowedHostsOriginValidator(
         AuthMiddlewareStack(
             URLRouter(
