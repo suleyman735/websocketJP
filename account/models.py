@@ -1,6 +1,8 @@
 from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+import uuid
+
 # Create your models here.
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -30,6 +32,8 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
           (AGENT, 'Agent'),
         (MANAGER, 'Manager'),
          )
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     role = models.CharField(max_length=20, choices=ROLES_CHOICES, default=AGENT)

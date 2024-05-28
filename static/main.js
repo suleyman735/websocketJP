@@ -66,6 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
     chatWelcomeElement,
   });
 
+
+  function scrollToBottom() {
+    chatLogElement.scrollTop = chatLogElement.scrollHeight
+    
+  }
+
+
+
   function getCookie(name) {
     let cookieValue = null;
     var cookies = document.cookie.split(";");
@@ -114,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
         </div>`;
+        scrollToBottom()
       } else {
         chatLogElement.innerHTML += `
                 <div class='flex w-full mt-2 space-x-3 max-w-md ml-auto justify-end'> 
@@ -129,6 +138,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>`;
       }
     }
+    else if (data.type == 'users_update') {
+      chatLogElement.innerHTML += '<p class="mt-2">The admin/agent has joined the chat!</p>'
+      
+    }
+    scrollToBottom()
   }
 
   async function joinChatRoom() {
@@ -168,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     chatSocket.onopen = function (e) {
       console.log("onOpen - chat socket was opened");
+      scrollToBottom()
     };
     chatSocket.onclose = function (e) {
       console.log("onClose - chat socket was closed");
@@ -203,4 +218,10 @@ document.addEventListener("DOMContentLoaded", function () {
     sendMessage();
     return false;
   };
+  chatInputElement.onkeyup = function (e) {
+    if (e.keyCode == 13) {
+        sendMessage();
+    }
+    
+  }
 });
